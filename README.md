@@ -16,7 +16,53 @@ This platform enables users to design and simulate IoT networks with features si
 
 
 The system architecture comprises a Spring Boot backend and a React frontend, communicating via REST APIs. WebSocket is used for real-time traffic visualization.
+## Docker Image
+```sh
+version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: iotnetsim
+    ports:
+      - "3306:3306"
 
+  backend:
+    build:
+      context: ./backend-IoTNetSim
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_started
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/iotnetsim
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=root --execute \"SHOW DATABASES;\""
+      interval: 5s
+      timeout: 2s
+      retries: 100
+
+  frontend:
+    build:
+      context: ./frontend-IoTNetSim
+    ports:
+      - "80:80"
+    depends_on:
+      backend:
+        condition: service_started
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "8081:80"
 ### Backend
 The backend manages device configurations, network setup, and simulation processing. It includes:
 1. **Controllers**: Handle API requests for device and network operations.
