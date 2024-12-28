@@ -48,7 +48,7 @@ services:
       timeout: 2s
       retries: 100
 
-  frontend:
+ ## frontend:
     build:
       context: ./frontend-IoTNetSim
     ports:
