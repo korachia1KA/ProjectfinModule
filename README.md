@@ -18,6 +18,8 @@ This platform enables users to design and simulate IoT networks with features si
 The system architecture comprises a Spring Boot backend and a React frontend, communicating via REST APIs. WebSocket is used for real-time traffic visualization.
 ## Docker Image
 ```sh
+
+
 version: '3'
 services:
   mysql:
