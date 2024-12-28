@@ -1,3 +1,5 @@
+# IoTNetSim
+
 # IoT Network Simulation Platform
 
 This platform enables users to design and simulate IoT networks with features similar to Cisco Packet Tracer. Users can add and connect IoT devices such as sensors and actuators, configure communication protocols like MQTT , and monitor real-time data traffic through WebSocket visualizations. The platform also supports detailed network analysis, providing tools to optimize IoT designs efficiently in a secure and interactive environment.
@@ -16,10 +18,10 @@ This platform enables users to design and simulate IoT networks with features si
 
 
 The system architecture comprises a Spring Boot backend and a React frontend, communicating via REST APIs. WebSocket is used for real-time traffic visualization.
+
 ## Docker Image
 
-
-
+```yaml
 version: '3'
 services:
   mysql:
@@ -48,9 +50,7 @@ services:
       timeout: 2s
       retries: 100
 
-
-
- ## frontend:
+  frontend:
     build:
       context: ./frontend-IoTNetSim
     ports:
@@ -67,6 +67,9 @@ services:
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "8081:80"
+
+```
+
 ### Backend
 The backend manages device configurations, network setup, and simulation processing. It includes:
 1. **Controllers**: Handle API requests for device and network operations.
@@ -124,38 +127,51 @@ Here are step-by-step instructions to get your project up and running locally:
 
 ### Steps:
 1. Clone the repository:
-    ```bash
+    ```
     git clone <repository_url>
     cd <project_directory>
     ```
+    
 2. Setup the Backend:
     - Navigate to the backend directory:
-      ```bash
+      
+    ```
       cd backend-IotNetSim
-      ```
+      
+    ```
     - Install dependencies:
-      ```bash
+      
+    ```
       mvn clean install
-      ```
+      
+    ```
     - Run the backend:
-      ```bash
+      
+    ```
       mvn spring-boot:run
-      ```
+      
+    ```
     - Verify the backend at [http://localhost:8080](http://localhost:8080).
 
 3. Setup the Frontend:
     - Navigate to the frontend directory:
-      ```bash
+      
+    ```
       cd frontend-IotNetSim
-      ```
+      
+    ```
     - Install dependencies:
-      ```bash
+      
+    ```
       npm install
-      ```
+      
+    ```
     - Run the frontend:
-      ```bash
+      
+    ```
       npm run dev
-      ```
+      
+    ```
     - Access the app at [http://localhost:3000](http://localhost:3000).
 
 ---
@@ -177,15 +193,20 @@ Validate the video at [Elsevier's Video Validator](http://elsevier-apps.sciverse
 ## Contributing
 1. Fork the repository.
 2. Create a new branch:
-    ```bash
+    
+    ```
     git checkout -b feature-name
+    
     ```
 3. Commit your changes:
-    ```bash
+    
+    ```
     git commit -m "Add feature-name"
+    
     ```
 4. Push to your branch:
-    ```bash
+    
+    ```
     git push origin feature-name
     ```
 5. Create a pull request for review.
@@ -194,7 +215,4 @@ Validate the video at [Elsevier's Video Validator](http://elsevier-apps.sciverse
 ## Contributors
 - Abdelghafour Korachi ([GitHub](https://github.com/korachia1KA/))
 - Youness ait moh  ([GitHub](https://github.com/AIT-MOH-Youness/))
-- Mohamed Lachgar ([Researchgate](https://www.researchgate.net/profile/Mohamed-Lachgar))
-
-
 
